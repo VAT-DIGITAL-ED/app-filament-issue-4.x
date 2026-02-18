@@ -20,10 +20,6 @@ class CustomerForm
                     ->email()
                     ->required()
                     ->maxLength(255),
-                TextInput::make('phone')
-                    ->label('Phone')
-                    ->tel()
-                    ->maxLength(20),
             ]);
     }
 }
