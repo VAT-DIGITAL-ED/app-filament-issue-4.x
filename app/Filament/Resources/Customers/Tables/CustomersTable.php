@@ -23,12 +23,13 @@ class CustomersTable
             ->filters([
                 //
             ])
+            ->recordUrl(null)
             ->recordActions([
                 Action::make('view')
                     ->label('View')
-                    ->openUrlInNewTab() // Does not work
+                    ->openUrlInNewTab()         // Does not work
                     ->url(fn (Customer $record): string => CustomerResource::getUrl('view', ['record' => $record]))
-                    // ->openUrlInNewTab() // Works
+                    // ->openUrlInNewTab()     // Works
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
