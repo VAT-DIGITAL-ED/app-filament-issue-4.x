@@ -34,7 +34,7 @@ class CustomComponentTest extends Component implements HasForms
         $this->showComponent = false;
     }
 
-        public function render()
+    public function render()
     {
         return view('livewire.custom-component-test');
     }
