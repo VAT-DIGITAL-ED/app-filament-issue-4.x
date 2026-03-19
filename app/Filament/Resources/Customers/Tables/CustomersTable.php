@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Customers\Tables;
 
+use App\Filament\Resources\Customers\Actions\ViewCustomerAction;
 use App\Filament\Resources\Customers\CustomerResource;
 use App\Models\Customer;
 use Dom\Text;
@@ -25,11 +26,7 @@ class CustomersTable
             ])
             ->recordUrl(null)
             ->recordActions([
-                Action::make('view')
-                    ->label('View')
-                    ->openUrlInNewTab()         // Does not work
-                    ->url(fn (Customer $record): string => CustomerResource::getUrl('view', ['record' => $record]))
-                    // ->openUrlInNewTab()     // Works
+                ViewCustomerAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
