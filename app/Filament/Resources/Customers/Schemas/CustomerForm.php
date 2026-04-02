@@ -19,7 +19,9 @@ class CustomerForm
                     ->label('Email')
                     ->email()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->hintIconTooltip('Example tooltip text.')
+                    ->hintIcon('heroicon-o-question-mark-circle'),
                 TextInput::make('phone')
                     ->label('Phone')
                     ->tel()
