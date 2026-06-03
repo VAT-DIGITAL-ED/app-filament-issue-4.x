@@ -41,18 +41,37 @@ class CustomersTable
                     ->action(function ($record) {
                         $user = auth()->user();
 
+                        // Works correctly
                         Notification::make()
-                            ->title('Test Notification')
+                            ->title('Works correctly')
                             ->success()
                             ->actions([
                                 Action::make('view')
-                                    ->url(CustomerResource::getUrl('edit', ['record' => $record]))
+                                    ->label('View')
+                                    ->url('https://filamentphp.com')
+                                    ->button()
+                                    ->markAsRead()
+                                    ->close(),
+                            ])
+                            ->sendToDatabase($user);
+
+                        // Does not work correctly
+                        Notification::make()
+                            ->title('Does not work correctly')
+                            ->success()
+                            ->actions([
+                                Action::make('view')
+                                    ->url(CustomerResource::getUrl('edit', [
+                                        'record' => $record,
+                                    ]))
                                     ->button()
                                     ->markAsRead()
                                     ->close(),
                             ])
                             ->sendToDatabase($user);
                     }),
+
+
             ]);
     }
 }
