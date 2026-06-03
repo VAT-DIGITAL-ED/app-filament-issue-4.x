@@ -7,6 +7,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
+use App\Filament\Resources\Customers\CustomerResource;
 
 class CustomersTable
 {
@@ -36,18 +37,19 @@ class CustomersTable
             ->recordActions([
                 // EditAction::make(),
                 Action::make('test_send_notification')
-                    ->label('Send Notification')
-                    ->action(function () {
+                    ->label('Send Notification Test')
+                    ->action(function ($record) {
                         $user = auth()->user();
 
                         Notification::make()
-                            ->title('Saved successfully')
+                            ->title('Test Notification')
                             ->success()
-                            ->body('Changes to the post have been saved.')
                             ->actions([
                                 Action::make('view')
+                                    ->url(CustomerResource::getUrl('edit', ['record' => $record]))
                                     ->button()
-                                    ->markAsRead(),
+                                    ->markAsRead()
+                                    ->close(),
                             ])
                             ->sendToDatabase($user);
                     }),
