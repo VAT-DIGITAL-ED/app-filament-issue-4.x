@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Customers\Tables;
 
-use App\Filament\Resources\Customers\Actions\ViewCustomerAction;
 use Dom\Text;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -34,9 +33,6 @@ class CustomersTable
             ])
             ->filters([
                 //
-            ])
-            ->recordActions([
-                ViewCustomerAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
